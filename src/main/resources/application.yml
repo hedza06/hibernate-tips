@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: Named Queries and Entity Graphs
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hibernate?useUnicode=true&characterEncoding=utf8&useSSL=false
+    name: MySQL Connection Source
+    username: root
+    password: root
+    hikari:
+          data-source-properties:
+            cachePrepStmts: true
+            prepStmtCacheSize: 250
+            prepStmtCacheSqlLimit: 2048
+            useServerPrepStmts: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLInnoDBDialect
+    database: MYSQL
+    show_sql: false
+    properties:
+        hibernate.cache.use_second_level_cache: false
+        hibernate.cache.use_query_cache: false
+        hibernate.generate_statistics: true
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+
+server:
+  servlet:
+    context-path: /api
+  port: 8080
+
+debug: true
