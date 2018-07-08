@@ -4,7 +4,7 @@ Every tip will be part of new branch.
 
 
 ## Running the project
-1. Create database with name hibernate
+1. Create database with name `hibernate`
 2. Open terminal and navigate to project directory
 3. Run command: ```mvn clean install -DskipTests```
 4. Run project.
