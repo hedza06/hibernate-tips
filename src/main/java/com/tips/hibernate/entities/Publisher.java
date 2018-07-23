@@ -1,5 +1,6 @@
 package com.tips.hibernate.entities;
 
+import org.hibernate.annotations.Formula;
 import org.springframework.context.annotation.Description;
 
 import javax.persistence.*;
@@ -23,6 +24,9 @@ public class Publisher implements Serializable {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Formula(value = "concat(first_name, ' ', last_name)")
+    private String fullNameWithFormula;
+
     public Integer getId() {
         return id;
     }
@@ -45,6 +49,14 @@ public class Publisher implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return this.firstName.concat(" ").concat(this.lastName);
+    }
+
+    public String getFullNameWithFormula() {
+        return fullNameWithFormula;
     }
 
     @Override

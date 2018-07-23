@@ -1,7 +1,10 @@
-# Hibernate Tips & Tricks
-This repo is about Hibernate solutions to most common problems in development.
-Every tip will be part of new branch.
+# Caching preprocessed, non-persistent attributes
 
+There are different ways to provide a calculated value to the user of the entity:
+
+- You can use a ```@Formula``` to provide an SQL expression that returns the value
+- You can use field access and calculate the value in a getter method  
+- You can use a ```transient entity``` attribute that stores the calculated value without persisting it in the database.
 
 ## Running the project
 1. Create database with name `hibernate`
@@ -14,16 +17,11 @@ Every tip will be part of new branch.
 1. Open terminal and navigate to project directory
 2. Run command: ```mvn test```
 
-## Branches
-For now you can find only one branch with code for named queries and entity graphs.
-
 ## Contribution  
 If you would like to contribute on this project or share your knowledge, have some suggestions or 
 other stuff feel free to contact me or make a pull request.
 
-
 ## Author
-
 Heril Muratović  
 Software Engineer  
 <br>

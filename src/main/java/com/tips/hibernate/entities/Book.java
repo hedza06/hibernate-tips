@@ -44,6 +44,9 @@ public class Book implements Serializable {
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
     private Set<Review> reviews = new HashSet<>();
 
+    @Transient
+    private Integer numberOfReviewsTransient;
+
     public Integer getId() {
         return id;
     }
@@ -82,6 +85,14 @@ public class Book implements Serializable {
 
     public void setReviews(final Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public int getNumberOfReviewsTransient()
+    {
+        if (numberOfReviewsTransient == null) {
+            return reviews.size();
+        }
+        return numberOfReviewsTransient;
     }
 
     @Override
