@@ -15,7 +15,6 @@ To compile (make implementation of your mapper) type command: ``mvn compile``.
 4. Run project.
 
 ## Running tests
-
 1. Open terminal and navigate to project directory
 2. Run command: ```mvn test```
 
@@ -28,7 +27,6 @@ other stuff feel free to contact me or make a pull request.
 
 
 ## Author
-
 Heril Muratović  
 Software Engineer  
 <br>
