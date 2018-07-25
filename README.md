@@ -1,11 +1,12 @@
-# Immutable Entities
-Database views, in general, are mapped in the same way as database tables. You just have to define an entity 
-that maps the view with the specific name and one or more of its columns.  But the normal table mapping is not 
-read-only, and you can use the entity to change its content.  
+# Mappers
+MapStruct is a code generator that greatly simplifies the implementation of mappings between Java bean types 
+based on a convention over configuration approach.
 
-Depending on the database you use and the definition of the view, you’re not allowed to perform an update on the view content. You should therefore also prevent Hibernate from updating it.
-You can easily achieve that by annotating your entity with Hibernate’s ```@Immutable``` annotation.
+The generated mapping code uses plain method invocations and thus is fast, type-safe and easy to understand.
 
+
+## Compile Mappers
+To compile (make implementation of your mapper) type command: ``mvn compile``.
 
 ## Running the project
 1. Create database with name `hibernate`
