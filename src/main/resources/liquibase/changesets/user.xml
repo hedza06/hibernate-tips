@@ -14,11 +14,21 @@
     <property name="floatType" value="float4" dbms="postgresql, h2"/>
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
-    <!-- Importing Dummy Data -->
-    <changeSet id="import_0004" author="hedza06" context="dev, prod">
-       <sqlFile path="../seeds/publishers.sql" relativeToChangelogFile="true"/>
-       <sqlFile path="../seeds/books.sql" relativeToChangelogFile="true"/>
-       <sqlFile path="../seeds/reviews.sql" relativeToChangelogFile="true"/>
-       <sqlFile path="../seeds/user.sql" relativeToChangelogFile="true" />
+    <!-- Create User table -->
+    <changeSet id="user_table" author="hedza06" context="dev, prod">
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="${autoIncrement}">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="jmbg" type="varchar(13)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="first_name" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -1,12 +1,10 @@
-# Mappers
-MapStruct is a code generator that greatly simplifies the implementation of mappings between Java bean types 
-based on a convention over configuration approach.
-
-The generated mapping code uses plain method invocations and thus is fast, type-safe and easy to understand.
-
-
-## Compile Mappers
-To compile (make implementation of your mapper) type command: ``mvn compile``.
+# Natural Identifiers
+A natural identifier nevertheless identifies a database record and an object in the real world.
+ A lot of use cases use them instead of an artificial, surrogate key. It is, therefore, good practice to model 
+ them as unique keys in your database. 
+ 
+ Hibernate also allows you to model them as a natural identifier of an 
+ entity and provides an extra API for retrieving them from the database.
 
 ## Running the project
 1. Create database with name `hibernate`

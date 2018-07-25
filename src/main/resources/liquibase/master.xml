@@ -10,6 +10,7 @@
     <include file="./changesets/book.xml" relativeToChangelogFile="true" />
     <include file="./changesets/review.xml" relativeToChangelogFile="true" />
     <include file="./changesets/publisher.xml" relativeToChangelogFile="true" />
+    <include file="./changesets/user.xml" relativeToChangelogFile="true" />
     <include file="./changesets/seed-import.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>
