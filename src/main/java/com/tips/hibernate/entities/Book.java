@@ -1,5 +1,6 @@
 package com.tips.hibernate.entities;
 
+import org.hibernate.annotations.Immutable;
 import org.springframework.context.annotation.Description;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ import java.util.Set;
         query = "select b from Book b where b.publishedAt > current_date()"
     )
 })
+// @Immutable
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;

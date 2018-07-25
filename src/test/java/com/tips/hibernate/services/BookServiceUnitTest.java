@@ -1,13 +1,14 @@
 package com.tips.hibernate.services;
 
 import com.tips.hibernate.entities.Book;
+import com.tips.hibernate.entities.BookView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.NoResultException;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,22 +20,20 @@ public class BookServiceUnitTest {
     private BookService bookService;
 
     @Test
-    public void fetchBookByTitleOneTest()
+    public void fetchBookView()
     {
-        Book book = bookService.getByTitle("Hibernate Tips");
-        assertThat(book.getTitle()).isEqualTo("Hibernate Tips");
-        assertThat(book.getReviews()).isNotNull();
+        List<BookView> bookViewList = bookService.findBookView();
+        assertThat(bookViewList).isNotNull();
+        assertThat(bookViewList.size()).isGreaterThan(0);
     }
 
     @Test
-    public void fetchBookByTitleTwoTest()
+    public void updateBook()
     {
         Book book = bookService.getByTitle("Spring Boot And Redis");
-        assertThat(book.getTitle()).isEqualTo("Spring Boot And Redis");
-    }
+        book.setTitle("test-update");
 
-    @Test(expected = NoResultException.class)
-    public void fetchBookByTitleNonExistingTest() {
-        bookService.getByTitle(";lasdasd2q1231");
+        Book afterUpdate = bookService.update(book);
+        assertThat(book.getTitle()).isEqualTo(afterUpdate.getTitle());
     }
 }

@@ -1,6 +1,10 @@
-# Hibernate Tips & Tricks
-This repo is about Hibernate solutions to most common problems in development.
-Every tip will be part of new branch.
+# Immutable Entities
+Database views, in general, are mapped in the same way as database tables. You just have to define an entity 
+that maps the view with the specific name and one or more of its columns.  But the normal table mapping is not 
+read-only, and you can use the entity to change its content.  
+
+Depending on the database you use and the definition of the view, you’re not allowed to perform an update on the view content. You should therefore also prevent Hibernate from updating it.
+You can easily achieve that by annotating your entity with Hibernate’s ```@Immutable``` annotation.
 
 
 ## Running the project

@@ -1,6 +1,9 @@
 package com.tips.hibernate.services;
 
 import com.tips.hibernate.entities.Book;
+import com.tips.hibernate.entities.BookView;
+import com.tips.hibernate.repositories.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Description(value = "")
 @Service
@@ -15,6 +19,9 @@ public class BookService {
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private BookRepository bookRepository;
 
     /**
      * Method for getting book by title - named query.
@@ -31,14 +38,31 @@ public class BookService {
     }
 
     /**
-     * Method for getting list of books published after current date
+     * Method for getting immutable book view
      *
-     * @return List of Books published after current date
+     * @return List of Book Views
      */
-    public List<Book> getByPublishedAt()
+    public List<BookView> findBookView()
     {
-        TypedQuery<Book> bookTypedQuery = entityManager
-                .createNamedQuery("FetchBookByPublishedDateGreaterThanCurrent", Book.class);
-        return bookTypedQuery.getResultList();
+        return bookRepository
+                .findAll()
+                .stream()
+                .map(book -> {
+                    BookView bookView = new BookView();
+                    bookView.setId(book.getId());
+                    bookView.setPublisher(book.getPublisher());
+                    bookView.setTitle(book.getTitle());
+                    return bookView;
+                }).collect(Collectors.toList());
+    }
+
+    /**
+     * Method for updating immutable entity
+     *
+     * @param book - provided book to update
+     * @return Book entity
+     */
+    public Book update(Book book) {
+        return bookRepository.save(book);
     }
 }
