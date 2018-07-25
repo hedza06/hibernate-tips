@@ -1,6 +1,7 @@
 package com.tips.hibernate.services;
 
 import com.tips.hibernate.entities.User;
+import com.tips.hibernate.enumerations.UserType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,9 @@ public class UserServiceUnitTest {
     private UserService userService;
 
     @Test
-    public void findByNaturalId()
+    public void findByUserTypeTest()
     {
-        User user = userService.findByJmbg("1401992220013");
-        assertThat(user.getJmbg()).isEqualTo("1401992220013");
+        User user = userService.findByUserType(UserType.FIZICKO_LICE);
+        assertThat(user.getUserType().enumValue()).isEqualTo(UserType.FIZICKO_LICE.enumValue());
     }
 }

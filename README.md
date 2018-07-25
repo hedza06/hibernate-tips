@@ -1,10 +1,11 @@
-# Natural Identifiers
-A natural identifier nevertheless identifies a database record and an object in the real world.
- A lot of use cases use them instead of an artificial, surrogate key. It is, therefore, good practice to model 
- them as unique keys in your database. 
- 
- Hibernate also allows you to model them as a natural identifier of an 
- entity and provides an extra API for retrieving them from the database.
+# Enum Mapping
+Since JPA 2.1, you can use an AttributeConverter to implement a custom mapping for your enums. 
+It allows you to implement the conversion between a Java type and its database representation. 
+You can use it to convert all basic attributes defined by entity classes, mapped superclasses, 
+or embeddable classes. 
+
+The only exceptions are id attributes, version attributes, relationship attributes 
+and attributes annotated as ```@Temporal``` or ```@Enumerated```.
 
 ## Running the project
 1. Create database with name `hibernate`

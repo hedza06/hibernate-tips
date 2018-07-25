@@ -1,5 +1,6 @@
 package com.tips.hibernate.entities;
 
+import com.tips.hibernate.enumerations.UserType;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -27,6 +28,9 @@ public class User implements Serializable {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "type")
+    private UserType userType;
 
     public Integer getId() {
         return id;
@@ -58,6 +62,14 @@ public class User implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     @Override

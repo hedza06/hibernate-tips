@@ -29,6 +29,9 @@
             <column name="last_name" type="varchar(64)">
                 <constraints nullable="false"/>
             </column>
+            <column name="type" type="enum('legal', 'individual')">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
