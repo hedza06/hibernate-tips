@@ -1,7 +1,8 @@
 package com.tips.hibernate.enumerations;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
+import org.springframework.context.annotation.Description;
 
+@Description(value = "User Type Enumeration.")
 public enum UserType {
 
     PRAVNO_LICE("legal"),
@@ -17,7 +18,6 @@ public enum UserType {
         return enumValue;
     }
 
-    @JsonCreator
     public static UserType fromText(String text)
     {
         for (UserType userType : UserType.values())
